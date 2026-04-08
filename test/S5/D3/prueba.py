@@ -1,0 +1,119 @@
+# class Temperatura:
+#     def __int__ (self):
+#         self.__grados = 20
+
+#     @property
+#     def grados(self):
+#         return self.__grados
+    
+#     @grados.setter
+#     def grados(self, nuevo_grado):
+#         if nuevo_grado < 0:
+#             print('Temperatura invalida')
+#         else:
+#             self.__grados = nuevo_grado
+
+
+# clima = Temperatura()
+
+# # con el metodo tradicinal necesitamos usar el clima.get_grados() para obtener el valor de grados
+# # clima._grados NO FUNCIONA
+
+# print(clima.grados)
+# clima.grados = -20
+# print(clima.grados)
+
+
+# class Tienda:
+#     # atributo de la clase Aplica a todos
+#     impuesto_iva = 0.13
+
+#     def __init__(self, productos):
+#         self.productos = productos
+        
+#     @classmethod
+#     def cambiar_impuesto(cls, nuevo_impuesto):
+#         cls.impuesto_iva = nuevo_impuesto
+        
+        
+# Tienda.cambiar_impuesto(0.15)
+
+
+# class RegistroVisitantes:
+#     # atributo de clase: el total o contador de personas
+#     total_personas = 0 
+
+
+#     def __init__(self, nombre_visitante):
+        
+#         self.nombre = nombre_visitante
+
+#         RegistroVisitantes.total_personas += 1
+
+#         print(f'[{self.nombre}ha ingresado], la pizzarra global ahora marca: {RegistroVisitantes.total_personas}')
+
+
+# persona1 = RegistroVisitantes('Diego')
+# persona2 =  RegistroVisitantes('Maria')
+# persona3 =  RegistroVisitantes('Juan')
+
+
+# print(f'Total final del dia de personas es: {RegistroVisitantes.total_personas}')
+
+
+
+
+
+class EmpleadoTienda:
+    # atributos de clase
+    sueldo_minimo = 300
+    cantidad_empleado = 0
+
+    # constructor
+    def __init__ (self, nombre, id_empleado):
+        #nombre
+        self.nombre = nombre
+        # id de empleado
+        self.id = id_empleado
+    
+        # cada vez que nace un empleado, modificamos el atributo de clase
+        EmpleadoTienda.cantidad_empleado += 1
+
+
+
+    # metodo de clase(la ley modifica el aumento del salario)
+    @classmethod
+    def aumento_nacional(cls, nuevo_salario):
+        # Recordatorio, usar cls y no self en los metodos de clase
+        cls.sueldo_minimo_legal = nuevo_salario
+
+        print('/n [COMUNICADO OFICAL] El gobierno ha cambiado el sueldo minimo')
+
+    
+    # mostrar recibos de pago
+    def mostrar_recibos(self):
+        #el objeto lee la informacion compartida de su clase y sus datos propios 
+        print(f'Empleado {self.id}: {self.nombre} | Pago a recibir: {EmpleadoTienda.sueldo_minimo_legal}')
+
+# Programa inicial
+print('/n -- sueldo de planilla nacional--')
+# print de encabezado
+
+# creamos 2 personas empleadas
+trabajador1 = EmpleadoTienda('Juan', 1)
+trabajador2 = EmpleadoTienda('Luis', 2)
+
+
+#comprobar que la variable compartida funciono (contador)
+print(f'Total se empleados: {EmpleadoTienda.cantidad_empleado}')
+
+#dia de pago
+# Generar los recibos de ambos empleados
+trabajador1.mostrar_recibos()
+trabajador2.mostrar_recibos()
+
+# el gobierno interviene, aumetamos el sueldo minimo
+EmpleadoTienda.aumento_nacional(400)
+
+trabajador1.mostrar_recibos()
+trabajador2.mostrar_recibos()

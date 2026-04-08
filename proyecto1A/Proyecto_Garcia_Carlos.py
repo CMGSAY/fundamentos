@@ -7,6 +7,7 @@ print('='*30)
 # Funcion para guardar los codigos ingresados en una lista
 def guardar_codigo(lista, codigo):
     lista.append(codigo)
+    
     return lista
 
 # Funcion para mostrar todos los codigos ingresados hasta el momento
