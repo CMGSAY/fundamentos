@@ -1,0 +1,18 @@
+Registro de de calderas 
+Caldera-Norte
+120
+Caldera-Sur
+250
+Reactor-Principal
+80
+Turbina-Alfa
+300
+Registro de de calderas 
+Caldera-Norte
+120
+Caldera-Sur
+250
+Reactor-Principal
+80
+Turbina-Alfa
+300
