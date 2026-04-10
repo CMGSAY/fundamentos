@@ -21,10 +21,10 @@ def dividir_codigo(lista_codigos):
     
     lista_codigo_dividido = []
 
-    for codigo_str in lista_codigos:
+    for codigo in lista_codigos:
         
-        if len(codigo_str) == 5:
-            codigo_dividido = [int(codigo_str[0]), int(codigo_str[1:4]), int(codigo_str[4])]
+        if len(codigo) == 5 and codigo.isdigit():
+            codigo_dividido = [ int(codigo[0]), int(codigo[1:4]), int(codigo[4]) ]
         else:
             codigo_dividido = ['Error']
         
@@ -44,6 +44,11 @@ def codigo_valido(lista_codigo_dividido):
     lista_codigos_invalidos = []
 
     for codigo in lista_codigo_dividido:
+        
+        if codigo == ['Error']:
+            lista_codigos_invalidos.append(codigo)
+            continue
+        
         if (1 <= codigo[0] <= 3) and (100 <= codigo[1] <= 999) and (0 <= codigo[2] <= 1):
             lista_codigos_validos.append(codigo)
         else:
@@ -136,24 +141,24 @@ diccionario_lote_uno, diccionario_lote_dos, diccionario_lote_tres = clasificar_l
 
 # variables para almacenar la cantidad y lotes de cada producto
 cantidad_lote_uno = 0
-num_lotes_uno = 0
+numero_lotes_uno = 0
 cantidad_lote_dos = 0
-num_lotes_dos = 0
+numero_lotes_dos = 0
 cantidad_lote_tres = 0
-num_lotes_tres = 0
+numero_lotes_tres = 0
 
 # for para calcular la cantidad total y el numero de lotes de cada producto
 for cantidad in diccionario_lote_uno['cantidades']:
     cantidad_lote_uno += cantidad
-    num_lotes_uno += 1
+    numero_lotes_uno += 1
 
 for cantidad in diccionario_lote_dos['cantidades']:
     cantidad_lote_dos += cantidad
-    num_lotes_dos += 1
+    numero_lotes_dos += 1
 
 for cantidad in diccionario_lote_tres['cantidades']:
     cantidad_lote_tres += cantidad
-    num_lotes_tres += 1
+    numero_lotes_tres += 1
     
 # variables para almacenar el promedio de cada lote
 promedio_lote_uno = 0
@@ -161,14 +166,14 @@ promedio_lote_dos = 0
 promedio_lote_tres = 0
 
 # Determinar el producto con mayor cantidad de lotes, evitando la division por cero
-if num_lotes_uno > 0:
-    promedio_lote_uno = cantidad_lote_uno / num_lotes_uno
+if numero_lotes_uno > 0:
+    promedio_lote_uno = cantidad_lote_uno / numero_lotes_uno
 
-if num_lotes_dos > 0:
-    promedio_lote_dos = cantidad_lote_dos / num_lotes_dos
+if numero_lotes_dos > 0:
+    promedio_lote_dos = cantidad_lote_dos / numero_lotes_dos
 
-if num_lotes_tres > 0:
-    promedio_lote_tres = cantidad_lote_tres / num_lotes_tres
+if numero_lotes_tres > 0:
+    promedio_lote_tres = cantidad_lote_tres / numero_lotes_tres
 
 # Determinar categoria de cada producto segun su promedio
 categoria_lote_uno = determinar_categoria(promedio_lote_uno)
@@ -189,9 +194,9 @@ else:
 # variable para almacenar el producto con mas lotes
 producto_mas_lotes = ''
 # Determinar el producto con mayor cantidad de lotes
-if num_lotes_uno >= num_lotes_dos and num_lotes_uno >= num_lotes_tres:
+if numero_lotes_uno >= numero_lotes_dos and numero_lotes_uno >= numero_lotes_tres:
     producto_mas_lotes = 'Fertilizante'
-elif num_lotes_dos >= num_lotes_uno and num_lotes_dos >= num_lotes_tres:
+elif numero_lotes_dos >= numero_lotes_uno and numero_lotes_dos >= numero_lotes_tres:
     producto_mas_lotes = 'Insecticida'
 else:
     producto_mas_lotes = 'Herbicida'
@@ -200,14 +205,14 @@ else:
 promedio_productos_producido = 0
 
 # Almacenar el total de lotes
-lotes_totales = num_lotes_uno + num_lotes_dos + num_lotes_tres
+lotes_totales = numero_lotes_uno + numero_lotes_dos + numero_lotes_tres
 
 # Almacenar el total de productos producidos
-productos_totales = cantidad_lote_uno + cantidad_lote_dos + cantidad_lote_tres
+productos_totales = promedio_lote_uno + promedio_lote_dos + promedio_lote_tres
 
 # Calcular el promedio total de produccion.
-if lotes_totales > 0:
-    promedio_productos_producido = productos_totales / lotes_totales
+if productos_totales > 0:
+    promedio_productos_producido = productos_totales / 3
 
 # mostrar los resultados finales
 print('\nSalida de los datos ingresados: ')
@@ -220,9 +225,9 @@ print('\n--- RESULTADOS FINALES ---')
 print(f'{"Producto":<15} {"Lotes":<15} {"Total Unidades":<15} {"Promedio Lote":<15} {"Categoria":<15}')
 print('-'*75)
 
-print(f'{diccionario_lote_uno["nombre"]:<15} {num_lotes_uno:<15} {cantidad_lote_uno:<15} {promedio_lote_uno:<15.2f} {categoria_lote_uno:<15}')
-print(f'{diccionario_lote_dos["nombre"]:<15} {num_lotes_dos:<15} {cantidad_lote_dos:<15} {promedio_lote_dos:<15.2f} {categoria_lote_dos:<15}')
-print(f'{diccionario_lote_tres["nombre"]:<15} {num_lotes_tres:<15} {cantidad_lote_tres:<15} {promedio_lote_tres:<15.2f} {categoria_lote_tres:<15}')
+print(f'{diccionario_lote_uno["nombre"]:<15} {numero_lotes_uno:<15} {cantidad_lote_uno:<15} {promedio_lote_uno:<15.2f} {categoria_lote_uno:<15}')
+print(f'{diccionario_lote_dos["nombre"]:<15} {numero_lotes_dos:<15} {cantidad_lote_dos:<15} {promedio_lote_dos:<15.2f} {categoria_lote_dos:<15}')
+print(f'{diccionario_lote_tres["nombre"]:<15} {numero_lotes_tres:<15} {cantidad_lote_tres:<15} {promedio_lote_tres:<15.2f} {categoria_lote_tres:<15}')
 
 print('-'*75)
 print(f' Producto mas producido: {producto_mas_producido}') 
