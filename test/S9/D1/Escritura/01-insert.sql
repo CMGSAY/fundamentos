@@ -1,0 +1,1 @@
+INSERT INTO users(name,email,age) VALUES('Miguel', 'miguel@gaml.com', 19);
