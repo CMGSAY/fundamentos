@@ -28,5 +28,5 @@ FROM productos
 WHERE STOCK > 10 
 GROUP BY proveedor_id
 
-
+-- ---- 
 https://www.scrumstudy.com/certification/scrum-fundamentals-certified
