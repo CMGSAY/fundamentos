@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estacion espacial</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Bien venidio a la base de control de la estacion espacial</h1>
+        <h2>Panel de control</h2>
+        <h3> Modulo de despacho y resgistro</h3>
+    </header>
+
+    <main>
+
+        <section>
+            <p> <strong>Operaciones registradas</strong></p>
+            <a href="/misiones">Ver Bitacora</a>
+
+        </section>
+        <section>
+            <h3> Registrar nueva mision de exploracion</h3>
+
+            <form action="/misiones" method="post">
+
+                <div>
+                    <label for="nombre">Nombre de la nave</label>
+                     <input type="text" name="nombre" id="nombre" required>
+                </div>
+                <br>
+                <div>
+                    <label for="destino">Sector de destino </label>
+                    <input type="text" name="destino" id="destino" required placeholder="Ej: Nebulosa">
+                </div>
+                <br>
+                <div>
+                    <label for="rango_peligro">Rango de peligro </label>
+                    <select name="rango_peligro" id="rango_peligro" required>
+                        <option value="">Seleccione un rango</option>
+                        <option value="bajo">Bajo</option>
+                        <option value="medio">Medio</option>
+                        <option value="alto">Alto</option>
+                        <option value="extremo">Extremo</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label for="detalles">Detalles adicionales</label>
+                    <textarea name="detalles" id="detalles" rows="5" cols="50" placeholder="Informacion adicional de la miosion"> </textarea>
+                </div>
+
+                <br>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+
+
+    </main>
+
+    <footer>
+        <p> 2026 Estacion espacial Derechos reservados  </p>
+    </footer>
+</body>
+</html>

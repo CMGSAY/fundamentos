@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Prestamo</title>
+    <link rel="stylesheet" href="banco.css">
+</head>
+<body>
+    <header>
+        <h1>Simulador Prestamo</h1>
+    </header>
+        
+    <main>
+        <h2>Datos Personales</h2>
+        <form id="formulario" action="/evaluar-credito" method="post">
+            <label for="nombre ">Nombre:</label> 
+            <input id="nombre" name="nombre" type="text" placeholder="Ej. Carlos" required> 
+            <br> 
+            <label for="ingresos">Ingresos:</label>
+            <input id="ingresos" name="ingresos" type="number" placeholder="Ej. 10000">
+            <br>
+            <label for="montosolicitado">Monto Solicitado:</label> 
+            <input id="montosolicitado"  name="montosolicitado " type="number" placeholder="Ej. 10000">
+            <br>
+            <button type="reset">Limpiar</button>
+            <button type="submit">Enviar</button>
+        </form>
+
+        
+        </script>
+    </main>
+    <script>
+            document.getElementById("formulario").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const ingresos = parseFloat(document.getElementById("ingresos").value);
+                const montoSolicitado = parseFloat(document.getElementById("montosolicitado").value);
+                
+                if (monto > (ingresos * 10) )
+                {
+                    event.preventDefault();
+                    alert("El monto solicitado es mayor al ingreso");
+                }
+            }); 
+    </script>
+</body>
+</html>

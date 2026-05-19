@@ -1,0 +1,31 @@
+body{
+    font-family: 'segoe ui', sans-serif;
+    background-color: #d5d1d2df;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+section{
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #3164d1;
+    color: #fff;
+    border: 1 px solid #3164d1;
+    border-radius: 4px;
+    cursor: pointer
+}
